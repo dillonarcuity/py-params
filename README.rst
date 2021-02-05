@@ -100,6 +100,7 @@ Accessing parameters not defined as class level attributes would raise an ``Attr
 
 NEWS
 ----
+ - **05.Feb.2021** - v0.10.2 - passing any ``kwargs`` to ``argparser`` ``add_argument()`` from ``Param.__init__``
  - **10.Jan.2021** - v0.10.1 - YAML (de)serialization added; support for positional argument in argparse.
  - **04.Apr.2020** - ``WithParams`` mixin added.
  - **31.Mar.2020** - support for generating ``argparse`` CLI parser. Hierarchy aggregation refactored.

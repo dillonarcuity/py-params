@@ -15,7 +15,7 @@ import argparse
 class Param:
     """ Provides a parameter specification to be used within a Params instance. """
     def __init__(self, value, doc: Text = None, dtype: Type = None, required: bool = False,
-                 positional: bool = False, params_class=None):
+                 positional: bool = False, params_class=None, **kwargs):
         """
         Constructs a parameter specification to be used in a Params instance:
 
@@ -40,6 +40,7 @@ class Param:
         self.doc_string = doc
         self.required = required
         self.dtype = dtype
+        self.argparse_kwargs = kwargs
         if dtype is None and value is not None and not callable(value):
             self.dtype = type(value)
         if value is not None and not callable(value):
@@ -328,6 +329,7 @@ class Params(dict):
                 "help": spec.doc_string,
                 "default": spec.default_value
             }
+            add_argument_args.update(spec.argparse_kwargs)
             if spec.dtype == bool:
                 add_argument_args.update({
                     "type": _str2bool, "nargs": "?", "const": True
