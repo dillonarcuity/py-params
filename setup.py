@@ -4,7 +4,12 @@
 # created by kpe on 16.03.2019 at 1:26 AM
 #
 
-from setuptools import setup, find_packages, convert_path
+from setuptools import setup, find_packages
+
+try:
+    from setuptools import convert_path
+except ImportError:
+    from setuptools._distutils.util import convert_path
 
 with open("README.rst", "r") as fh:
     long_description = fh.read()
